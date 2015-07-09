@@ -190,8 +190,8 @@
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
       //iterate through all diagonals
-      // for (var j = -this.n() + 1; j < this.n()+ (this.n() -1); j++) {
-      for (var j = 0; j < this.n(); j++) {
+      for (var j = -this.n() + 1; j < this.n()+ (this.n() -1); j++) {
+      //for (var j = 0; j < this.n(); j++) {
         //if hasmaj... for current index
         if (this.hasMajorDiagonalConflictAt(j)){
           //return true;
