@@ -118,9 +118,8 @@
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
       var counter = 0;
-      //loop through i <this.n()
-      for (var i = 0; i < this.n(); i++){
-        //increment counter by getpiece(rowIndex, i)
+      var n = this.n();
+      for (var i = 0; i < n; i++){
         counter += this.getPiece(rowIndex,i);
       }
 
@@ -129,13 +128,12 @@
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      //loop through all the rows
-      for (var i = 0; i < this.n(); i++){
+      var n = this.n();
+      for (var i = 0; i < n; i++){
         if (this.hasRowConflictAt(i)){
           return true;
         }
       }
-      //if hasRowConflict(index) return true
       return false;
     },
 
@@ -145,28 +143,22 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      //variable counter
       var counter = 0;
-      //for loop iterate through rows
-      for(var i = 0; i < this.n(); i++) {
-        //increment counter by get position function
+      var n = this.n();
+      for(var i = 0; i < n; i++) {
         counter += this.getPiece(i, colIndex);
       }
-      //return if counter greater than 1
       return counter > 1;
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      //iterate through columns
-      for(var i = 0; i < this.n(); i++) {
-        //if column has conflict
+      var n = this.n();
+      for(var i = 0; i < n; i++) {
         if(this.hasColConflictAt(i)) {
-          //return true
           return true;
         }
       }
-      //return false
       return false;
     },
 
@@ -176,29 +168,22 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      //set a counter
       var counter = 0;
-      //loop through the rows
-      for (i = 0; i < this.n(); i++){
-        //increment counter by getpiece(row = i, col = major... +i)
+      var n = this.n();
+      for (i = -n - 2; i < n; i++){
         counter += this.getPiece(majorDiagonalColumnIndexAtFirstRow + i, i);
       }
-      //return if counter is > 1
       return counter > 1;
     },
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      //iterate through all diagonals
-      for (var j = -this.n() + 1; j < this.n()+ (this.n() -1); j++) {
-      //for (var j = 0; j < this.n(); j++) {
-        //if hasmaj... for current index
-        if (this.hasMajorDiagonalConflictAt(j)){
-          //return true;
+      var n = this.n();
+      for (var j = -n + 1; j < n + n - 1; j++) {
+        if (this.hasMajorDiagonalConflictAt(j)) {
           return true;
         }
       }
-      //return false
       return false;
     },
 
@@ -208,28 +193,22 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-      //set a counter
       var counter = 0;
-      //loop through the rows
-      for (i = 0; i < this.n(); i++){
-        //increment counter by getpiece(row = i, col = major... +i)
+      var n = this.n();
+      for (i = 0; i < n; i++){
         counter += this.getPiece(minorDiagonalColumnIndexAtFirstRow - i, i);
-        }
-      //return if counter is > 1
+      }
       return counter > 1;
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      //iterate through all diagonals
-      for (var j = 0; j < 2*this.n() - 1; j++) {
-        //if hasminor... for current index
-        if (this.hasMinorDiagonalConflictAt(j)){
-          //return true;
+      var n = this.n();
+      for (var i = 0; i < 2 * n - 1; i++) {
+        if (this.hasMinorDiagonalConflictAt(i)){
           return true;
         }
       }
-      //return false
       return false;
     }
 
